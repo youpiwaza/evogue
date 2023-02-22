@@ -2,7 +2,7 @@
 
 Ressources pour le professorat Evogue.
 
-### 🔒️ Sensible informations
+## 🔒️ Sensible informations
 
 Sensible files won't be versionned in this public project.
 
