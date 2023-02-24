@@ -14,3 +14,7 @@
    2. [Grilles responsive](https://isotope.metafizzy.co/)
    3. [Scroll/Chargements infinis](https://infinite-scroll.com/demo/full-page/)
    4. [Démos CodePen](https://freefrontend.com/anime-js-examples/)
+
+---
+
+Ajouter images ou schéma
