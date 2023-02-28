@@ -106,8 +106,19 @@
 
 
 
-                        <div class="card-footer text-muted">
-                            Le footer
+                        <div class="chat-footer card-footer">
+
+                            <div class="input-group mb-3">
+
+                                <input id="message" type="text" class="form-control" placeholder="Votre message" aria-label="Votre message">
+
+                                <button id="button-send" class="btn btn-outline-secondary" type="button">
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </button>
+
+                            </div>
+
+                        <!-- ./chat-footer -->
                         </div>
 
 
@@ -143,14 +154,68 @@
 
 
                         <div class="chat-body card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                            <!-- <h5 class="card-title">Special title treatment</h5> -->
+
+                            <div class="chat-bubble chat-bubble-right position-relative">
+
+                                <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
+                                    <button class="btn-display btn btn-light">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <button class="btn-display btn btn-light">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+
+                                <span class="chat-bubble-content"></span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, autem!</span>
+                                
+                            </div>
+
+                            <div class="chat-bubble disabled">
+                                <span class="chat-bubble-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore impedit asperiores mollitia nulla reprehenderit, expedita sunt minus voluptate, iusto quos eveniet quo, molestias nihil excepturi. Officiis magni quibusdam ducimus soluta totam. Saepe porro, distinctio veritatis dolores quis nobis molestiae temporibus voluptates incidunt voluptatibus, sed nihil. Voluptate, fuga! Consequuntur vitae aliquam enim suscipit quidem, adipisci rem atque. Quas quod laudantium, fuga dolore quia exercitationem explicabo neque, quo recusandae officia unde distinctio. Molestiae molestias sint architecto vel fuga, nemo officia culpa harum repellat soluta? Ratione aut officia alias incidunt ea ipsam magni, id adipisci earum, nihil sint dolores recusandae vero vitae, expedita dolorum perspiciatis! Excepturi laborum vitae sequi similique voluptate commodi vel optio harum doloribus, tenetur rerum repellat corrupti aperiam beatae suscipit provident. Ipsam minus adipisci reiciendis earum inventore. Cum esse itaque necessitatibus sed in eveniet, molestiae illo atque! Ea ratione enim exercitationem dicta maiores quidem est deserunt quos consequatur culpa unde id consectetur natus necessitatibus esse quas possimus recusandae, consequuntur et! Iste porro rerum excepturi eos magni eius culpa assumenda dolor error repellendus ipsa et ipsam soluta beatae reprehenderit omnis, alias, cum ratione vitae nemo sed maxime eligendi nisi! Delectus illo repellendus voluptate aut modi? Doloribus, libero? Nobis officia suscipit expedita!</span>
+                            </div>
+
+                            <p class="date-dernier-message card-text">
+                                <small class="text-muted">Dernier message reçu il y a <span id="time-last-message">10</span> secondes</small>
+                            </p>
+
+                            <div class="suggested-responses suggested-responses-hidden card">
+                                <div class="card-header">
+                                    <span class="card-text">Réponses suggérées</span>
+
+
+                                    <button class="btn-display btn position-absolute top-0 end-0">
+                                        <i class="fa-solid fa-caret-up"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#" class="btn btn-primary">C'est pas faux</a>
+                                    <a href="#" class="btn btn-primary">Nan ce mot jle connait pas</a>
+                                </div>
+                            </div>
+
+                        <!-- /.chat-body -->
                         </div>
 
-                        <div class="card-footer text-muted">
-                            2 days ago
+
+
+                        <div class="chat-footer card-footer">
+
+                            <div class="input-group mb-3">
+
+                                <input id="message" type="text" class="form-control" placeholder="Votre message" aria-label="Votre message">
+
+                                <button id="button-send" class="btn btn-outline-secondary" type="button">
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </button>
+
+                            </div>
+
+                        <!-- ./chat-footer -->
                         </div>
+
+
 
                     <!-- /#chat-second .card -->
                     </div>
