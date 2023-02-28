@@ -9,4 +9,3 @@ Front réalisé en 2h.
 Front ajusté pour comportement en 1h.
 
 JS en ~3h.
-
