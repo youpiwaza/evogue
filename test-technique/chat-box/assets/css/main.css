@@ -8,7 +8,7 @@
 */
 /*      Police > Google web fonts > Bebas Neue > https://fonts.google.com/specimen/Bebas+Neue?query=bebas */
 
-/* Resets */
+/*! Resets */
 * {
     box-sizing: border-box;
     /* transition: all .3s; */
@@ -33,49 +33,53 @@ body {
     text-align      : center;
 }
 
-a {
-    color           : #b8b9e5;
+a.contact {
+    color   : #b8b9e5;
 }
-a:active
-,a:hover
-,a:visited
+a.contact:active
+,a.contact:hover
+,a.contact:visited
 {
-    color           : #4c4f99;
+    color   : #4c4f99;
+}
+
+/*! Utilitaires */
+.hidden {
+    display : none;
 }
 
 
 
 /*! Chats */
 .chats {
-    color           : rgba(33, 37, 41, .75);
+    color   : rgba(33, 37, 41, .75);
 }
 
 /** Headers */
 /* Icône */
 .chat-header .icone button {
-    height: 50px;
-    width: 50px;
+    height  : 50px;
+    width   : 50px;
 }
 .chat-header .icone i {
     /* FIX: Alignement vertical FA */
-    line-height     : 50px;
+    line-height : 50px;
 }
 /* Avatar / https://www.youtube.com/watch?v=zKe8jze56Vg */
 .chat-header .avatar img {
-    box-shadow      : 0px 0px 5px rgba(0, 0, 0, .75);
+    box-shadow  : 0px 0px 5px rgba(0, 0, 0, .75);
 }
 /* Nom de l'utilisateur */
 .chat-header .name {
     /* FIX: Alignement vertical */
-    padding-top     : 5px;
+    padding-top : 5px;
 }
 
 /** Body */
 .chat-body {
-    font-size       : 0.5em;
-
-    /* Masquer réponses suggérées quand repliées */
-    overflow        : hidden;
+    font-size   : 0.5em;
+    max-height  : 60vh;
+    overflow-y  : auto;
 
     /* Lier réponses suggérées */
     padding-bottom  : 0;
@@ -106,22 +110,25 @@ a:active
     }
 
 .chat-bubble-actions {
-    opacity: 0;
+    opacity : 0;
 }
     .chat-bubble:not(.disabled):hover .chat-bubble-actions {
-        opacity             : 1;
+        opacity : 1;
     }
 
 /* Réponses suggérées */
 .suggested-responses {
     border-bottom               : none;
     border-bottom-left-radius   : 0px;
-    border-bottom-right-radius  : 0px;
-
-    /* Animation caché/révélé */
-    transition                  : margin-bottom .5s;
+    border-bottom-right-radius  : 0px;   
+}
+.suggested-responses .card-header {
+    border-bottom               : 0.8px solid rgba(0, 0, 0 , 0.176);
 }
 /* Repliées / cachées */
-.suggested-responses.suggested-responses-hidden {
-    margin-bottom               : -71px;
+.suggested-responses.suggested-responses-hidden .card-body {
+    display : none;
+}
+.suggested-responses.suggested-responses-hidden .card-header {
+    border-bottom   : none;
 }

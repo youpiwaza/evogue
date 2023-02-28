@@ -28,7 +28,7 @@
     <div class="container">
 
         <h1 class="mb-2">💬 Chatbox - Test technique Evogue</h1>
-        <h2 class="mb-4">Maxime Chevasson / <a href="mailto:masamune.code@gmail.com" title="Me contacter ;)">Masamune</a></h2>
+        <h2 class="mb-4">Maxime Chevasson / <a class="contact" href="mailto:masamune.code@gmail.com" title="Me contacter ;)">Masamune</a></h2>
 
         <div class="chats container text-center">
 
@@ -63,25 +63,68 @@
 
                         <div class="chat-body card-body">
 
-                            <!-- <h5 class="card-title">Special title treatment</h5> -->
-
-                            <div class="chat-bubble disabled">
-                                <span class="chat-bubble-content"></span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, autem!</span>
+                            <div class="chat-conversation-start mb-4">
+                                <h5 class="card-title mb-1">Début de votre conversation</h5>
+                                <p class="card-text">
+                                    <small class="text-muted">Vous pouvez envoyer un message</small>
+                                </p>
                             </div>
 
-                            <div class="chat-bubble chat-bubble-right position-relative">
 
-                                <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
-                                    <button class="btn-display btn btn-light">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="btn-display btn btn-light">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
+
+                            <div class="chat-conversation">
+                                <!-- La ou seront affichés les messages -->
+
+                                <div class="chat-bubble disabled">
+                                    <span class="chat-bubble-content"></span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, autem!</span>
                                 </div>
 
-                                <span class="chat-bubble-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero fugiat accusamus nemo vitae perferendis totam laborum ipsum animi similique. Omnis minima, ullam alias tempora deleniti assumenda voluptatum saepe inventore dolore.</span>
+                                <div class="chat-bubble chat-bubble-right position-relative">
+
+                                    <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
+                                        <button class="btn-display btn btn-light">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button class="btn-display btn btn-light">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <span class="chat-bubble-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero fugiat accusamus nemo vitae perferendis totam laborum ipsum animi similique. Omnis minima, ullam alias tempora deleniti assumenda voluptatum saepe inventore dolore.</span>
+                                </div>
+
+                                <div class="chat-bubble chat-bubble-right position-relative">
+
+                                    <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
+                                        <button class="btn-display btn btn-light">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button class="btn-display btn btn-light">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <span class="chat-bubble-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero fugiat accusamus nemo vitae perferendis totam laborum ipsum animi similique. Omnis minima, ullam alias tempora deleniti assumenda voluptatum saepe inventore dolore.</span>
+                                </div>
+
+                                <div class="chat-bubble chat-bubble-right position-relative">
+
+                                    <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
+                                        <button class="btn-display btn btn-light">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button class="btn-display btn btn-light">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <span class="chat-bubble-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero fugiat accusamus nemo vitae perferendis totam laborum ipsum animi similique. Omnis minima, ullam alias tempora deleniti assumenda voluptatum saepe inventore dolore.</span>
+                                </div>
+
+                            <!-- /.chat-conversation -->
                             </div>
+
+
 
                             <p class="date-dernier-message card-text">
                                 <small class="text-muted">Dernier message reçu il y a <span id="time-last-message">10</span> secondes</small>
@@ -130,6 +173,8 @@
                 <!-- /.col-12 col-md-6 col-xl-4 -->
                 </div>
 
+
+
                 <div class="col-12 col-md-6 col-xl-4">
 
                     <div id="chat-second" class="card mb-5">
@@ -156,32 +201,28 @@
 
                         <div class="chat-body card-body">
 
-                            <!-- <h5 class="card-title">Special title treatment</h5> -->
-
-                            <div class="chat-bubble chat-bubble-right position-relative">
-
-                                <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
-                                    <button class="btn-display btn btn-light">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button class="btn-display btn btn-light">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </div>
-
-                                <span class="chat-bubble-content"></span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, autem!</span>
-                                
+                            <div class="chat-conversation-start mb-4">
+                                <h5 class="card-title mb-1">Début de votre conversation</h5>
+                                <p class="card-text">
+                                    <small class="text-muted">Vous pouvez envoyer un message</small>
+                                </p>
                             </div>
 
-                            <div class="chat-bubble disabled">
-                                <span class="chat-bubble-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero fugiat accusamus nemo vitae perferendis totam laborum ipsum animi similique. Omnis minima, ullam alias tempora deleniti assumenda voluptatum saepe inventore dolore.</span>
+
+
+                            <div class="chat-conversation">
+                                <!-- La ou seront affichés les messages -->
+                            <!-- /.chat-conversation -->
                             </div>
+
+
 
                             <p class="date-dernier-message card-text">
                                 <small class="text-muted">Dernier message reçu il y a <span id="time-last-message">10</span> secondes</small>
                             </p>
 
                             <div class="suggested-responses suggested-responses-hidden card">
+
                                 <div class="card-header">
                                     <span class="card-text">Réponses suggérées</span>
 
@@ -190,10 +231,13 @@
                                         <i class="fa-solid fa-caret-up"></i>
                                     </button>
                                 </div>
+
                                 <div class="card-body">
-                                    <a href="#" class="btn btn-primary">C'est pas faux</a>
+                                    <a href="#" class="btn btn-primary me-2">C'est pas faux</a>
                                     <a href="#" class="btn btn-primary">Nan ce mot jle connait pas</a>
                                 </div>
+
+                            <!-- /.suggested-responses -->
                             </div>
 
                         <!-- /.chat-body -->
