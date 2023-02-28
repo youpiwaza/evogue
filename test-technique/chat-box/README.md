@@ -6,4 +6,6 @@ Réalisé le 28/02/23.
 
 Front réalisé en 2h.
 
-Début du JS à XXXh
+Front ajusté pour comportement en 1h.
+
+Début du JS à 13h30
