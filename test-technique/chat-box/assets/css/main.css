@@ -43,6 +43,19 @@ a.contact:active
     color   : #4c4f99;
 }
 
+/* Scrollbar plus sexy */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2); 
+    border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background: rgba(0,0,0,0.3); 
+}
+
 /*! Utilitaires */
 .hidden {
     display : none;

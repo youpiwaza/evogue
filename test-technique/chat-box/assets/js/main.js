@@ -88,6 +88,9 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
 }
 // console.log(conversations);
 
+// On ajoute le focus sur le premier chat
+conversations[0].formulaireTexte.focus();
+
 
 
 //* Ajouter un message
