@@ -33,6 +33,16 @@ body {
     text-align      : center;
 }
 
+a {
+    color           : #b8b9e5;
+}
+a:active
+,a:hover
+,a:visited
+{
+    color           : #4c4f99;
+}
+
 
 
 /*! Chats */
