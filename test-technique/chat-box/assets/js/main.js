@@ -6,6 +6,7 @@ console.log('/assets/js/main.js');
 //* Ajouter un message
 //      Aux deux chats
 //      Attention propriétaire
+// * Gestion du formulaire
 // * Réponses suggérées
 // * Edition, suppression
 
@@ -72,7 +73,17 @@ console.log(conversations);
 
 
 //* Ajouter un message
-//      Aux deux chats
-//      Attention propriétaire
+//      A quel chat auquel rajouter le message
+//      Contenu du message
+//      Est-il propriétaire ?
+//      Masquer "Début de la conversation"
+//      Mettre à jour le temps depuis le dernier message reçu
+conversations[0].messages.innerHTML = "lel";
+
+// * Gestion du formulaire
+//      Envoi lors du clic sur le bouton
+//      Réutiliser les données fournies
+//      Vider le champ texte
+
 // * Réponses suggérées
 // * Edition, suppression
