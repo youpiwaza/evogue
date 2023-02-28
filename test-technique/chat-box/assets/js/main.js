@@ -69,6 +69,14 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
     
     // On l'ajoute au tableau
     conversations.push(conversation);
+
+    // On gère le clic sur le bouton
+    //      ES5 bind afin de récupérer la conversation courante
+    //          @see        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+    //      Sinon alternative avec les data-attributes, auquels on passe l'identifiant du chat
+    //          @see        https://developer.mozilla.org/fr/docs/Learn/HTML/Howto/Use_data_attributes
+    conversation.formulaireBouton.addEventListener( 'click', onFormButtonSendClick.bind(conversation), false);
+
 }
 // console.log(conversations);
 
@@ -88,14 +96,7 @@ function ajouterMessage( chat, contenu, isProprietaire ) {
     // On rajoute le message à la suite des autres
     // chat.messages.innerHTML = genererContenuDuMessage( contenu, isProprietaire);
     chat.messages.innerHTML += genererContenuDuMessage( contenu, isProprietaire );
-
-    // On active le timer pour le temps depuis le dernier message reçu
-    affichageTimerDernierMessageRecu(chat);
 }
-// 📌 Tests
-ajouterMessage( conversations[1], 'lel', true );
-ajouterMessage( conversations[1], 'lol', false );
-ajouterMessage( conversations[1], 'Un autre test :3', true );
 
 
 
@@ -169,6 +170,36 @@ function mettreAJourTimerDernierMessageRecu( chat ) {
 //          Réutiliser les données fournies
 //          Envoi aux deux chats
 //      Vider le champ texte
+function onFormButtonSendClick( event ) {
+    // * On récupère le chat concerné, grâce à l'utilisation de bind lors de l'ajout de l'écouteur
+    // console.log(this);
+    const chat = this;
+
+    // On récupère le texte dans le champ concerné, si il y en a
+    // console.log(chat.formulaireTexte.value);
+    const texteAEnvoyer = chat.formulaireTexte.value;
+
+    // On envoie à tous les chats
+    for(let i = 0 ; i < conversationsHTML.length ; i++) {
+
+        // En faisant attention au propriétaire
+        //      Note: Dans les vrais projet éviter les comparaisons d'objets haha
+        if(conversations[i] == chat) {
+            // console.log('yay');
+            ajouterMessage( conversations[i], texteAEnvoyer, true );
+        }
+        else {
+            // console.log('nope');
+            ajouterMessage( conversations[i], texteAEnvoyer, false );
+
+            // On active le timer pour le temps depuis le dernier message reçu
+            affichageTimerDernierMessageRecu(conversations[i]);
+        }
+    }
+
+    // On vide le champ texte du chat concerné
+    chat.formulaireTexte.value = '';
+}
 
 // * Réponses suggérées
 // * Edition, suppression
