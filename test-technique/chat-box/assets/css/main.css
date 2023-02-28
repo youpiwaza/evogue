@@ -33,3 +33,31 @@ body {
     padding         : 1em;
     text-align      : center;
 }
+
+
+
+/*! Chats */
+.chats {
+    color           : rgba(33, 37, 41, .75);
+}
+
+
+/** Headers */
+/* Icône */
+.icone button {
+    height: 50px;
+    width: 50px;
+}
+.icone i {
+    /* FIX: Alignement vertical FA */
+    line-height     : 50px;
+}
+/* Avatar / https://www.youtube.com/watch?v=zKe8jze56Vg */
+.avatar img {
+    box-shadow      : 0px 0px 5px rgba(0, 0, 0, .75);
+}
+/* Nom de l'utilisateur */
+.name {
+    /* FIX: Alignement vertical */
+    padding-top     : 5px;
+}
