@@ -34,12 +34,16 @@ const conversationsReponsesSuggereesHTML            = document.querySelectorAll(
 // console.log(conversationsReponsesSuggereesHTML);
 
 // Conversations, textes des formulaires
-const conversationFormTextInputHTML                 = document.querySelectorAll('.form-input-message');
-// console.log(conversationFormTextInputHTML);
+const conversationsFormTextInputHTML                = document.querySelectorAll('.form-input-message');
+// console.log(conversationsFormTextInputHTML);
 
 // Conversations, boutons des formulaires
-const conversationFormButtonSendHTML                = document.querySelectorAll('.form-send-button');
-// console.log(conversationFormButtonSendHTML);
+const conversationsFormButtonSendHTML               = document.querySelectorAll('.form-send-button');
+// console.log(conversationsFormButtonSendHTML);
+
+// Conversations, formulaire, afin d'avoir une meilleure gestion
+const conversationsFormHTML                         = document.querySelectorAll('.chat-footer');
+// console.log(conversationsFormHTML);
 
 
 
@@ -59,8 +63,9 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
         ,messages                   : conversationsChatsHTML[i]
         ,tempsDepuisDernierMessage  : conversationsTempsDepuisDernierMessageHTML[i]
         ,reponsesSuggerees          : conversationsReponsesSuggereesHTML[i]
-        ,formulaireTexte            : conversationFormTextInputHTML[i]
-        ,formulaireBouton           : conversationFormButtonSendHTML[i]
+        ,formulaireTexte            : conversationsFormTextInputHTML[i]
+        ,formulaireBouton           : conversationsFormButtonSendHTML[i]
+        ,formulaire                 : conversationsFormHTML[i]
 
         // Afin de nettoyer l'évènement
         ,tempsDepuisDernierMessageIntervalId  : null
@@ -75,7 +80,10 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
     //          @see        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
     //      Sinon alternative avec les data-attributes, auquels on passe l'identifiant du chat
     //          @see        https://developer.mozilla.org/fr/docs/Learn/HTML/Howto/Use_data_attributes
-    conversation.formulaireBouton.addEventListener( 'click', onFormButtonSendClick.bind(conversation), false);
+    // conversation.formulaireBouton.addEventListener( 'click', onFormButtonSendClick.bind(conversation), false);
+
+    // 👷 Optimisation du comportement du formulaire
+    conversation.formulaire.addEventListener( 'submit', onFormSubmit.bind(conversation), false);
 
 }
 // console.log(conversations);
@@ -170,14 +178,23 @@ function mettreAJourTimerDernierMessageRecu( chat ) {
 //          Réutiliser les données fournies
 //          Envoi aux deux chats
 //      Vider le champ texte
-function onFormButtonSendClick( event ) {
+// function onFormButtonSendClick( event ) {
+function onFormSubmit( event ) {
+    // On ne recharge pas la page (suppression du comportement par défaut du formulaire html)
+    event.preventDefault();
+
     // * On récupère le chat concerné, grâce à l'utilisation de bind lors de l'ajout de l'écouteur
     // console.log(this);
     const chat = this;
 
     // On récupère le texte dans le champ concerné, si il y en a
     // console.log(chat.formulaireTexte.value);
-    const texteAEnvoyer = chat.formulaireTexte.value;
+    let texteAEnvoyer = chat.formulaireTexte.value;
+
+    // Ne pas envoyer de messages vides
+    if(texteAEnvoyer === '') {
+        texteAEnvoyer = "Si t'as rien à dire on va boire une bière 🍻";
+    }
 
     // On envoie à tous les chats
     for(let i = 0 ; i < conversationsHTML.length ; i++) {
