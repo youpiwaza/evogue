@@ -103,6 +103,12 @@ a.contact:active
     flex-direction  : column-reverse;
 }
 
+/* Les bulles ne prennent pas toute la largeur */
+.chat-body .chat-conversation {
+    align-items     : start;
+    display         : flex;
+    flex-direction  : column;
+}
 /* Bulles de chat / https://bbbootstrap.com/snippets/chat-bubble-hover-effect-23297029 */
 .chat-body .chat-bubble {
     background-color        :paleturquoise;
@@ -113,8 +119,12 @@ a.contact:active
     text-align              : left;
 }
 .chat-body .chat-bubble.chat-bubble-right {
+    /* Les bulles ne prennent pas toute la largeur */
+    align-self                  : end;
+    
     border-top-left-radius      : 1em;
     border-bottom-right-radius  : 0;
+    text-align                  : right;
 }
 .chat-body .chat-bubble.disabled {
     /* BS disabled */
