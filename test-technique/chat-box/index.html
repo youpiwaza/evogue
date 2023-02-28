@@ -61,14 +61,28 @@
 
 
 
+                        <!-- Le contenu HTML est inversé afin de forcer le scroll vers le bas via CSS -->
+                        <!--    @see    https://stackoverflow.com/a/44051405 -->
                         <div class="chat-body card-body">
 
-                            <div class="chat-conversation-start mb-4">
-                                <h5 class="card-title mb-1">Début de votre conversation</h5>
-                                <p class="card-text">
-                                    <small class="text-muted">Vous pouvez envoyer un message</small>
-                                </p>
+                            <div class="suggested-responses suggested-responses-hidden card">
+                                <div class="card-header">
+                                    <span class="card-text">Réponses suggérées</span>
+
+
+                                    <button class="btn-display btn position-absolute top-0 end-0">
+                                        <i class="fa-solid fa-caret-up"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#" class="btn btn-primary">C'est pas faux</a>
+                                    <a href="#" class="btn btn-primary">Nan ce mot jle connait pas</a>
+                                </div>
                             </div>
+
+                            <p class="date-dernier-message card-text">
+                                <small class="text-muted">Dernier message reçu il y a <span id="time-last-message">10</span> secondes</small>
+                            </p>
 
 
 
@@ -126,23 +140,11 @@
 
 
 
-                            <p class="date-dernier-message card-text">
-                                <small class="text-muted">Dernier message reçu il y a <span id="time-last-message">10</span> secondes</small>
-                            </p>
-
-                            <div class="suggested-responses suggested-responses-hidden card">
-                                <div class="card-header">
-                                    <span class="card-text">Réponses suggérées</span>
-
-
-                                    <button class="btn-display btn position-absolute top-0 end-0">
-                                        <i class="fa-solid fa-caret-up"></i>
-                                    </button>
-                                </div>
-                                <div class="card-body">
-                                    <a href="#" class="btn btn-primary">C'est pas faux</a>
-                                    <a href="#" class="btn btn-primary">Nan ce mot jle connait pas</a>
-                                </div>
+                            <div class="chat-conversation-start mb-4">
+                                <h5 class="card-title mb-1">Début de votre conversation</h5>
+                                <p class="card-text">
+                                    <small class="text-muted">Vous pouvez envoyer un message</small>
+                                </p>
                             </div>
 
                         <!-- /.chat-body -->
@@ -201,26 +203,6 @@
 
                         <div class="chat-body card-body">
 
-                            <div class="chat-conversation-start mb-4">
-                                <h5 class="card-title mb-1">Début de votre conversation</h5>
-                                <p class="card-text">
-                                    <small class="text-muted">Vous pouvez envoyer un message</small>
-                                </p>
-                            </div>
-
-
-
-                            <div class="chat-conversation">
-                                <!-- La ou seront affichés les messages -->
-                            <!-- /.chat-conversation -->
-                            </div>
-
-
-
-                            <p class="date-dernier-message card-text">
-                                <small class="text-muted">Dernier message reçu il y a <span id="time-last-message">10</span> secondes</small>
-                            </p>
-
                             <div class="suggested-responses suggested-responses-hidden card">
 
                                 <div class="card-header">
@@ -238,6 +220,22 @@
                                 </div>
 
                             <!-- /.suggested-responses -->
+                            </div>
+
+                            <p class="date-dernier-message card-text">
+                                <small class="text-muted">Dernier message reçu il y a <span id="time-last-message">10</span> secondes</small>
+                            </p>
+
+                            <div class="chat-conversation">
+                                <!-- La ou seront affichés les messages -->
+                            <!-- /.chat-conversation -->
+                            </div>
+
+                            <div class="chat-conversation-start mb-4">
+                                <h5 class="card-title mb-1">Début de votre conversation</h5>
+                                <p class="card-text">
+                                    <small class="text-muted">Vous pouvez envoyer un message</small>
+                                </p>
                             </div>
 
                         <!-- /.chat-body -->

@@ -83,6 +83,11 @@ a.contact:active
 
     /* Lier réponses suggérées */
     padding-bottom  : 0;
+
+    /* Forcer scroll vers le bas */
+    /*      @see    https://stackoverflow.com/a/44051405 */
+    display         : flex;
+    flex-direction  : column-reverse;
 }
 
 /* Bulles de chat / https://bbbootstrap.com/snippets/chat-bubble-hover-effect-23297029 */
