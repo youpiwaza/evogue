@@ -9,3 +9,5 @@ Front réalisé en 2h.
 Front ajusté pour comportement en 1h.
 
 JS en ~3h.
+
+Version [en ligne ici](http://stockage.masamune.fr/evogue/test-technique/chat-box/).
