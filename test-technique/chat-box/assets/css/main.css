@@ -11,7 +11,7 @@
 /* Resets */
 * {
     box-sizing: border-box;
-    transition: all .3s;
+    /* transition: all .3s; */
 }
 
 
@@ -27,7 +27,6 @@ body {
     color           : #F2E3D5;
     font-family     : 'Bebas Neue', cursive;
     font-size       : 2em;
-    line-height     : 1.4em;
     margin          : 0;
     min-height      : 100vh;
     padding         : 1em;
@@ -41,23 +40,78 @@ body {
     color           : rgba(33, 37, 41, .75);
 }
 
-
 /** Headers */
 /* Icône */
-.icone button {
+.chat-header .icone button {
     height: 50px;
     width: 50px;
 }
-.icone i {
+.chat-header .icone i {
     /* FIX: Alignement vertical FA */
     line-height     : 50px;
 }
 /* Avatar / https://www.youtube.com/watch?v=zKe8jze56Vg */
-.avatar img {
+.chat-header .avatar img {
     box-shadow      : 0px 0px 5px rgba(0, 0, 0, .75);
 }
 /* Nom de l'utilisateur */
-.name {
+.chat-header .name {
     /* FIX: Alignement vertical */
     padding-top     : 5px;
+}
+
+/** Body */
+.chat-body {
+    font-size       : 0.5em;
+
+    /* Masquer réponses suggérées quand repliées */
+    overflow        : hidden;
+
+    /* Lier réponses suggérées */
+    padding-bottom  : 0;
+}
+
+/* Bulles de chat / https://bbbootstrap.com/snippets/chat-bubble-hover-effect-23297029 */
+.chat-body .chat-bubble {
+    background-color        :paleturquoise;
+    border-radius           : 1em;
+    border-top-left-radius  : 0;
+    margin-bottom           : 1em;
+    padding                 : 0.5em 1em;
+    text-align              : left;
+}
+.chat-body .chat-bubble.chat-bubble-right {
+    border-top-left-radius      : 1em;
+    border-bottom-right-radius  : 0;
+}
+.chat-body .chat-bubble.disabled {
+    /* BS disabled */
+    background-color        : rgba(108,117,125);
+    cursor                  : default;
+}
+    /* Survol uniquement si actif */
+    .chat-bubble:not(.disabled):hover {
+        background-color    : lightseagreen;
+        cursor              : pointer;
+    }
+
+.chat-bubble-actions {
+    opacity: 0;
+}
+    .chat-bubble:not(.disabled):hover .chat-bubble-actions {
+        opacity             : 1;
+    }
+
+/* Réponses suggérées */
+.suggested-responses {
+    border-bottom               : none;
+    border-bottom-left-radius   : 0px;
+    border-bottom-right-radius  : 0px;
+
+    /* Animation caché/révélé */
+    transition                  : margin-bottom .5s;
+}
+/* Repliées / cachées */
+.suggested-responses.suggested-responses-hidden {
+    margin-bottom               : -71px;
 }
