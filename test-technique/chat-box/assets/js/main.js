@@ -85,6 +85,21 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
     // 👷 Optimisation du comportement du formulaire
     conversation.formulaire.addEventListener( 'submit', onFormSubmit.bind(conversation), false);
 
+    // * Gestion des réponses suggérées
+    //      Gestion de l'affichage conditionnel
+    const reponsesSuggereesHeaderHTML = conversation.reponsesSuggerees.querySelector('.card-header');
+    // console.log(reponsesSuggereesHeaderHTML);
+    reponsesSuggereesHeaderHTML.addEventListener( 'click', onReponsesSuggereesHeaderClick.bind(conversation), false);
+
+    //      Gestion des évènements
+    const reponsesSuggereesBoutonsHTML = conversation.reponsesSuggerees.querySelectorAll('.suggested-responses-content button');
+    // console.log(reponsesSuggereesBoutonsHTML);
+
+    // Pour chacun des boutons
+    for( let j = 0 ; j < reponsesSuggereesBoutonsHTML.length ; j++ ) {
+        // On gère le clic
+        reponsesSuggereesBoutonsHTML[j].addEventListener( 'click', onReponsesSuggereesBoutonsHTMLClick.bind(conversation), false);
+    }
 }
 // console.log(conversations);
 
@@ -221,5 +236,45 @@ function onFormSubmit( event ) {
     chat.formulaireTexte.value = '';
 }
 
+
+
 // * Réponses suggérées
+//      Affichage conditionnel
+function onReponsesSuggereesHeaderClick() {
+    // * On récupère le chat concerné, grâce à l'utilisation de bind lors de l'ajout de l'écouteur
+    // console.log(this);
+    const chat = this;
+
+    // On affiche ou on masque ~bouton bascule
+    chat.reponsesSuggerees.classList.toggle('suggested-responses-hidden');
+}
+
+//      Affichage des messages
+function onReponsesSuggereesBoutonsHTMLClick( event ) {
+    // * On récupère le chat concerné, grâce à l'utilisation de bind lors de l'ajout de l'écouteur
+    // console.log(this);
+    const chat = this;
+    
+    // On récupère le texte du bouton
+    let texteAEnvoyer = event.target.innerHTML;
+
+    // On envoie à tous les chats
+    for(let i = 0 ; i < conversationsHTML.length ; i++) {
+
+        // En faisant attention au propriétaire
+        //      Note: Dans les vrais projet éviter les comparaisons d'objets haha
+        if(conversations[i] == chat) {
+            // console.log('yay');
+            ajouterMessage( conversations[i], texteAEnvoyer, true );
+        }
+        else {
+            // console.log('nope');
+            ajouterMessage( conversations[i], texteAEnvoyer, false );
+
+            // On active le timer pour le temps depuis le dernier message reçu
+            affichageTimerDernierMessageRecu(conversations[i]);
+        }
+    }
+}
+
 // * Edition, suppression

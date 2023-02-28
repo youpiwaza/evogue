@@ -138,15 +138,22 @@ a.contact:active
 .suggested-responses {
     border-bottom               : none;
     border-bottom-left-radius   : 0px;
-    border-bottom-right-radius  : 0px;   
+    border-bottom-right-radius  : 0px;
 }
 .suggested-responses .card-header {
     border-bottom               : 0.8px solid rgba(0, 0, 0 , 0.176);
 }
+.suggested-responses .card-header .btn-display {
+    transform: rotate(180deg);   
+}
+
 /* Repliées / cachées */
 .suggested-responses.suggested-responses-hidden .card-body {
     display : none;
 }
 .suggested-responses.suggested-responses-hidden .card-header {
     border-bottom   : none;
+}
+.suggested-responses.suggested-responses-hidden .card-header .btn-display {
+    transform: none;
 }
