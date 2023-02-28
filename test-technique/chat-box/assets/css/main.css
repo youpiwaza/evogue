@@ -8,28 +8,28 @@
 */
 /*      Police > Google web fonts > Bebas Neue > https://fonts.google.com/specimen/Bebas+Neue?query=bebas */
 
+/* Resets */
+* {
+    box-sizing: border-box;
+    transition: all .3s;
+}
+
+
 html {
-    /* Couleur de fond > Dégradé de couleur */
     background      : rgb(15,194,192);
     background      : linear-gradient(139deg, rgba(15,194,192,1) 0%, rgba(1,89,88,1) 100%);
+    margin          : 0;
+    padding         : 0;
 }
 
 body {
-    /* Couleur de fond > Texture transparente */
     background      : url('../images/3px-tile.png') repeat;
-
-    /* Centrer le contenu */
-    align-items     : center;
-    display         : flex;
-    justify-content : center;
-
-    /* 100% de la hauteur */
-    min-height      : 100vh;
-
-    /* Le texte */
     color           : #F2E3D5;
     font-family     : 'Bebas Neue', cursive;
     font-size       : 2em;
     line-height     : 1.4em;
+    margin          : 0;
+    min-height      : 100vh;
+    padding         : 1em;
     text-align      : center;
 }
