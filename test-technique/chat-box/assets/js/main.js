@@ -1,19 +1,23 @@
 console.log('/assets/js/main.js');
 
 //! Roadmap
-//* Récupérer l'ensemble des identifiants
-//      Et les ranger
-//* Ajouter un message
-//      Aux deux chats
-//      Attention propriétaire
-// * Gestion du formulaire
-// * Réponses suggérées
-// * Edition, suppression
+//* ✅ Récupérer l'ensemble des identifiants
+//      ✅ Et les ranger
+//* ✅ Ajouter un message
+//      ✅ Aux deux chats
+//      ✅ Attention propriétaire
+// * ✅ Gestion du formulaire
+// * ✅ Réponses suggérées
+// * ✅ Edition, suppression
 
 
 
 /// ---
 
+
+//*     Variables
+//  Message courant, afin de pouvoir les éditer / supprimer
+let identifiantPourMessage = 1;
 
 
 //*     Récupérer l'ensemble des identifiants
@@ -71,7 +75,7 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
         ,tempsDepuisDernierMessageIntervalId  : null
     }
     // console.log(conversation);
-    
+
     // On l'ajoute au tableau
     conversations.push(conversation);
 
@@ -130,29 +134,29 @@ function ajouterMessage( chat, contenu, isProprietaire ) {
 //      Vu que l'on a déjà généré le html, et ajusté le css, on copie colle simplement
 //      Puis on remplace le contenu dynamique par les variables
 function genererContenuDuMessage( contenu, isProprietaire ) {
-    
+
     // return isProprietaire ? yep : nope;
 
     if(isProprietaire) {
         return `
-            <div class="chat-bubble chat-bubble-right position-relative">
+            <div class="chat-bubble chat-bubble-right position-relative" data-message-id="message-${ identifiantPourMessage }">
 
                 <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
-                    <button class="btn-display btn btn-light">
+                    <button class="btn-edit btn btn-light" data-edit-id="message-${ identifiantPourMessage }" disabled>
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button class="btn-display btn btn-light">
+                    <button class="btn-delete btn btn-light" data-delete-id="message-${ identifiantPourMessage }">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 </div>
-                
+
                 <span class="chat-bubble-content">${ contenu }</span>
             </div>
         `;
     }
     else {
         return `
-            <div class="chat-bubble disabled">
+            <div class="chat-bubble disabled" data-message-id="message-${ identifiantPourMessage }">
                 <span class="chat-bubble-content">${ contenu }</span>
             </div>
         `;
@@ -234,6 +238,14 @@ function onFormSubmit( event ) {
 
     // On vide le champ texte du chat concerné
     chat.formulaireTexte.value = '';
+
+    // Une fois le message généré, on met à jour l'identifiant
+    //      Note : l'idenfiant est le même pour l'ensemble des chats auxquels le message sera envoyé
+    identifiantPourMessage++;
+
+    // Pour chaque message, on gère l'édition & la suppression
+    // manageButtonsEdit();
+    manageButtonsDelete();
 }
 
 
@@ -254,7 +266,7 @@ function onReponsesSuggereesBoutonsHTMLClick( event ) {
     // * On récupère le chat concerné, grâce à l'utilisation de bind lors de l'ajout de l'écouteur
     // console.log(this);
     const chat = this;
-    
+
     // On récupère le texte du bouton
     let texteAEnvoyer = event.target.innerHTML;
 
@@ -275,6 +287,74 @@ function onReponsesSuggereesBoutonsHTMLClick( event ) {
             affichageTimerDernierMessageRecu(conversations[i]);
         }
     }
+
+    // Une fois le message généré, on met à jour l'identifiant
+    //      Note : l'idenfiant est le même pour l'ensemble des chats auxquels le message sera envoyé
+    identifiantPourMessage++;
+
+    // Pour chaque message, on gère l'édition & la suppression
+    // manageButtonsEdit();
+    manageButtonsDelete();
 }
 
-// * Edition, suppression
+
+
+// * Edition, suppression de message
+function manageButtonsDelete() {
+
+    // On récupère l'ensemble des boutons, présents à ce moment la
+    const btnsDeleteHTML = document.querySelectorAll('.btn-delete');
+    console.log(btnsDeleteHTML);
+
+    // Pour chaque bouton
+    for(let i = 0 ; i < btnsDeleteHTML.length ; i++ ) {
+        let bouton = btnsDeleteHTML[i];
+
+        // On retire l'ensemble des écouteurs, afin d'éviter les doublons
+        bouton.removeEventListener('click', onBtnDeleteClick);
+
+        // Et on rajoute
+        bouton.addEventListener('click', onBtnDeleteClick);
+    }
+}
+
+function onBtnDeleteClick() {
+    // console.log(this);
+
+    // 🚨 En HTML "data-delete-id", transformé en JS en "deleteId"
+    // console.log(this.dataset.deleteId);
+    const identifiantMessageASupprimer = this.dataset.deleteId;
+
+    // On retire l'écouteur de ce bouton
+    this.removeEventListener('click', onBtnDeleteClick);
+
+    // Et on supprime les messages
+    supprimerMessage( identifiantMessageASupprimer );
+
+}
+
+function supprimerMessage( identifiantMessageASupprimer ) {
+    // Récupérer l'ensemble des messages ayant cet identifiant
+    //  Il devrait y en avoir un par tchat
+    //      @see        https://stackoverflow.com/a/62872204
+    let messagesASupprimer = document.querySelectorAll(`[data-message-id="${ identifiantMessageASupprimer }"]`);
+    console.log(`[data-message-id="message-${ identifiantMessageASupprimer }"]`);
+    console.log(messagesASupprimer);
+
+    // Et on les supprime
+    for( let i = 0 ; i < messagesASupprimer.length ; i++) {
+        // messagesASupprimer[i].remove();
+        
+        //      Attention, renvoie un tableau
+        // let content = messagesASupprimer[i].getElementsByClassName('chat-bubble-content')[0];
+        // console.log(content);
+        // content.classList.add('text-black-50');
+        // content.textContent = 'Message supprimé';
+
+        // On peut également remplacer leurs contenus par "Message supprimé"
+        messagesASupprimer[i].classList.add('disabled', 'text-black-50', 'bg-white');
+        messagesASupprimer[i].innerHTML = `
+            <span class="chat-bubble-content">Message supprimé</span>
+        `;
+    }
+}
