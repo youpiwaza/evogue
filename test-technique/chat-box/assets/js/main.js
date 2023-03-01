@@ -1,26 +1,26 @@
 console.log('/assets/js/main.js');
 
 //! Roadmap
-//* ✅ Récupérer l'ensemble des identifiants
+// * ✅ Récupérer l'ensemble des identifiants
 //      ✅ Et les ranger
-//* ✅ Ajouter un message
+// * ✅ Ajouter un message
 //      ✅ Aux deux chats
 //      ✅ Attention propriétaire
 // * ✅ Gestion du formulaire
 // * ✅ Réponses suggérées
-// * ✅ Edition, suppression
+// * ✅ ~~Edition~~, suppression
 
 
 
 /// ---
 
 
-//*     Variables
+// *     Variables
 //  Message courant, afin de pouvoir les éditer / supprimer
 let identifiantPourMessage = 1;
 
 
-//*     Récupérer l'ensemble des identifiants
+// *     Récupérer l'ensemble des identifiants
 // TexteS débuts de la conversation
 const conversationsDebutHTML                        = document.querySelectorAll('.chat-conversation-start');
 // console.log(conversationsDebutHTML);
@@ -84,18 +84,19 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
     //          @see        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
     //      Sinon alternative avec les data-attributes, auquels on passe l'identifiant du chat
     //          @see        https://developer.mozilla.org/fr/docs/Learn/HTML/Howto/Use_data_attributes
-    // conversation.formulaireBouton.addEventListener( 'click', onFormButtonSendClick.bind(conversation), false);
-
+    //          Il y a un exemple avec le bouton de suppression
+    
     // 👷 Optimisation du comportement du formulaire
-    conversation.formulaire.addEventListener( 'submit', onFormSubmit.bind(conversation), false);
+    // conversation.formulaireBouton.addEventListener( 'click', onFormButtonSendClick.bind(conversation), false);
+    conversation.formulaire.addEventListener( 'submit', onFormSubmit.bind(conversation), false );
 
     // * Gestion des réponses suggérées
-    //      Gestion de l'affichage conditionnel
+    //      Gestion de l'affichage déplié ou non
     const reponsesSuggereesHeaderHTML = conversation.reponsesSuggerees.querySelector('.card-header');
     // console.log(reponsesSuggereesHeaderHTML);
     reponsesSuggereesHeaderHTML.addEventListener( 'click', onReponsesSuggereesHeaderClick.bind(conversation), false);
 
-    //      Gestion des évènements
+    //      Gestion des clics sur les boutons (évènements)
     const reponsesSuggereesBoutonsHTML = conversation.reponsesSuggerees.querySelectorAll('.suggested-responses-content button');
     // console.log(reponsesSuggereesBoutonsHTML);
 
@@ -107,12 +108,13 @@ for(let i = 0 ; i < conversationsHTML.length ; i++) {
 }
 // console.log(conversations);
 
-// On ajoute le focus sur le premier chat
+// * Confort utilisateur
+//      On ajoute le focus sur le premier chat, il sera actif par défaut lors de l'arrivée sur la page
 conversations[0].formulaireTexte.focus();
 
 
 
-//* Ajouter un message
+// * Ajouter un message
 //      A quel chat auquel rajouter le message
 //      Contenu du message
 //          Est-il propriétaire ?
@@ -120,7 +122,7 @@ conversations[0].formulaireTexte.focus();
 //      Mettre à jour le temps depuis le dernier message reçu
 function ajouterMessage( chat, contenu, isProprietaire ) {
 
-    // On masque le début de la conversation
+    // On masque le début de la conversation, en ajoutant une classe CSS à l'élément
     chat.texteDuDebut.classList.add('hidden');
 
     // On rajoute le message à la suite des autres
@@ -130,7 +132,7 @@ function ajouterMessage( chat, contenu, isProprietaire ) {
 
 
 
-// Générer le message encapsulé dans le html qui va bieng
+// * Générer le message encapsulé dans le html qui va bieng
 //      Vu que l'on a déjà généré le html, et ajusté le css, on copie colle simplement
 //      Puis on remplace le contenu dynamique par les variables
 function genererContenuDuMessage( contenu, isProprietaire ) {
@@ -138,13 +140,16 @@ function genererContenuDuMessage( contenu, isProprietaire ) {
     // return isProprietaire ? yep : nope;
 
     if(isProprietaire) {
+        // TODO: 🌱 Bouton d'édition un peu la flemme :3
         return `
             <div class="chat-bubble chat-bubble-right position-relative" data-message-id="message-${ identifiantPourMessage }">
 
                 <div class="chat-bubble-actions position-absolute top-0 end-0 me-1 mt-1">
+                    <!--
                     <button class="btn-edit btn btn-light" data-edit-id="message-${ identifiantPourMessage }" disabled>
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
+                    -->
                     <button class="btn-delete btn btn-light" data-delete-id="message-${ identifiantPourMessage }">
                         <i class="fa-solid fa-trash"></i>
                     </button>
@@ -165,7 +170,7 @@ function genererContenuDuMessage( contenu, isProprietaire ) {
 
 
 
-// Dernier message reçu > Gestion du timer
+// * Dernier message reçu > Gestion du timer
 function affichageTimerDernierMessageRecu ( chat ) {
     // On affiche le temps depuis le dernier message reçu
     chat.tempsDepuisDernierMessage.classList.remove('hidden');
@@ -186,7 +191,7 @@ function affichageTimerDernierMessageRecu ( chat ) {
     chat.tempsDepuisDernierMessageIntervalId = intervalId;
 }
 
-// Dernier message reçu > Gestion de l'affichage
+// * Dernier message reçu > Gestion de l'affichage
 function mettreAJourTimerDernierMessageRecu( chat ) {
     const nombresHTML       = chat.tempsDepuisDernierMessage.querySelector('span');
     // On n'oublie pas de convertir la chaîne de caractères, sinon on se retrouve avec 1111111 ;)
@@ -200,6 +205,7 @@ function mettreAJourTimerDernierMessageRecu( chat ) {
 //          Réutiliser les données fournies
 //          Envoi aux deux chats
 //      Vider le champ texte
+
 // function onFormButtonSendClick( event ) {
 function onFormSubmit( event ) {
     // On ne recharge pas la page (suppression du comportement par défaut du formulaire html)
@@ -251,17 +257,19 @@ function onFormSubmit( event ) {
 
 
 // * Réponses suggérées
-//      Affichage conditionnel
+//      Affichage conditionnel / affichage déplié ou non
 function onReponsesSuggereesHeaderClick() {
     // * On récupère le chat concerné, grâce à l'utilisation de bind lors de l'ajout de l'écouteur
     // console.log(this);
     const chat = this;
 
     // On affiche ou on masque ~bouton bascule
+    //      On ajoute ou retire la classe CSS créée lors du front
     chat.reponsesSuggerees.classList.toggle('suggested-responses-hidden');
 }
 
-//      Affichage des messages
+// * Affichage des messages suggérés
+//      On réutilise la fonction d'ajout de message
 function onReponsesSuggereesBoutonsHTMLClick( event ) {
     // * On récupère le chat concerné, grâce à l'utilisation de bind lors de l'ajout de l'écouteur
     // console.log(this);
@@ -274,7 +282,7 @@ function onReponsesSuggereesBoutonsHTMLClick( event ) {
     for(let i = 0 ; i < conversationsHTML.length ; i++) {
 
         // En faisant attention au propriétaire
-        //      Note: Dans les vrais projet éviter les comparaisons d'objets haha
+        //      Note: ⚡️ Dans les vrais projet éviter les comparaisons d'objets, pour des raisons de performances
         if(conversations[i] == chat) {
             // console.log('yay');
             ajouterMessage( conversations[i], texteAEnvoyer, true );
@@ -299,10 +307,12 @@ function onReponsesSuggereesBoutonsHTMLClick( event ) {
 
 
 
-// * Edition, suppression de message
+// * Suppression de message
+//      La fonction afin de mettre en place l'ensemble des comportements
 function manageButtonsDelete() {
 
     // On récupère l'ensemble des boutons, présents à ce moment la
+    //      On est obligés de mettre à jour la liste vu que des messages, et donc des boutons, sont ajoutés à la volée
     const btnsDeleteHTML = document.querySelectorAll('.btn-delete');
     console.log(btnsDeleteHTML);
 
@@ -311,13 +321,19 @@ function manageButtonsDelete() {
         let bouton = btnsDeleteHTML[i];
 
         // On retire l'ensemble des écouteurs, afin d'éviter les doublons
+        //      ~un clic sur le bouton > le message est ajouté plusieurs fois
+        //      Cela permet aussi de "ramasser les miettes" (garbage collector)
+        //          et ainsi d'éviter des problèmes de performances ou comportements erratiques
+        //          en gros on "remet les comportements à zéro"
         bouton.removeEventListener('click', onBtnDeleteClick);
 
-        // Et on rajoute
+        // Et on les rajoute, un par bouton, de manière propre
         bouton.addEventListener('click', onBtnDeleteClick);
     }
 }
 
+// * Suppression de message
+//      Gestion du clic
 function onBtnDeleteClick() {
     // console.log(this);
 
@@ -333,6 +349,8 @@ function onBtnDeleteClick() {
 
 }
 
+// * Suppression de message
+//      On recherche les messages à supprimer, et on les retire / modifie
 function supprimerMessage( identifiantMessageASupprimer ) {
     // Récupérer l'ensemble des messages ayant cet identifiant
     //  Il devrait y en avoir un par tchat
