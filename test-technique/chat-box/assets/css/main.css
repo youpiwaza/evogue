@@ -115,6 +115,8 @@ a.contact:active
     border-radius           : 1em;
     border-top-left-radius  : 0;
     margin-bottom           : 1em;
+    /* Eviter que les messages trop long ne passent pas à la ligne */
+    max-width               : 100%;
     padding                 : 0.5em 1em;
     text-align              : left;
 }
